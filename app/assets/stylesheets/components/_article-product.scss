@@ -1,0 +1,44 @@
+.article-product {
+  display: flex;
+  justify-content: space-between;
+
+  .article-content {
+    height: 476px;
+    width: 447px;
+    border-radius: 0px;
+    padding: 60px;
+    background-color: rgba(249, 249, 249, 1);
+  }
+
+  .img-bg {
+    height: 480px;
+    width: 697px;
+    background-size: cover;
+  }
+}
+
+.article-content {
+  h4 {
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: left;
+  }
+
+  p {
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: left;
+  }
+
+  .button {
+  padding: 10px 46px;
+
+  background: #1D2229;
+  }
+}
