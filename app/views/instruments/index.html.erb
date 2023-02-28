@@ -8,7 +8,11 @@
     <% @instruments.each do |instrument| %>
       <%= link_to instrument_path(instrument), :action => 'go' do %>
         <div class="product-card">
+        <% if instrument.photo.attached? %>
           <div class="img-bg" style="background-image:url('<%= cl_image_path instrument.photo.key, height: 300, crop: :fill %>')";></div>
+        <% else %>
+          <div class="img-bg-none"><p>No Image</p></div>
+        <% end %>
           <div class="product-content">
             <div class="content-top">
               <p><%= instrument.name %></p>
