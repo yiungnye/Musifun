@@ -76,5 +76,8 @@ group :test do
   gem "webdrivers"
 end
 
-  # install the devise gem
-  gem 'devise'
+# install the devise gem
+gem 'devise'
+gem 'faker'
+gem "dotenv-rails", groups: [:development, :test]
+gem "cloudinary"
