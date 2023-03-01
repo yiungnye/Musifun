@@ -11,9 +11,11 @@
           <% end %>
         </div>
         <div class="content-right">
-            <h2><%= @instrument.name %></h2>
+            <h2 class="strong"><%= @instrument.name %></h2>
             <p><%= @instrument.description %></p>
-            <p><%= @instrument.price %></p>
+            <p>Rs <%= @instrument.price %> / day</p>
+            <p class="strong">Owner: <%= @instrument.user.first_name %></p>
+            <h5>Book</h5>
         </div>
     </div>
   </section>
