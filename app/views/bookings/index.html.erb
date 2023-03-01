@@ -1,0 +1,11 @@
+<h1>Listining Bookings</h1>
+
+<p>
+<% @bookings.each do |booking| %>
+
+  <%= booking.user.first_name %>
+  <%= booking.instrument.name %>
+  <%= booking.start %>
+  <%= booking.end %>
+  <% end %>
+</p>
