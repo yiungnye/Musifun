@@ -17,10 +17,32 @@
           <p class="card-text">Duration:</p>
           <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
           <p class="card-text">Owner:</p>
-          <p><%= link_to "Book", new_booking_path, class: " btn btn-primary" %></p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
         </div>
       </div>
     </div>
   </div>
   <h3 style="text-align:center;">Reviews</h3>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: @booking do |f| %>
+          <%= f.label :Start %>
+          <%= f.date_field :date %>
+          <%= f.label :End %>
+          <%= f.date_field :date %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
