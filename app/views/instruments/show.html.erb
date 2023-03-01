@@ -2,22 +2,22 @@
 <div class="container mt-4">
   <div class="card mb-3" style="max-width: 1240px;">
     <div class="row g-0">
-      <div class="col-md-4">
+      <div class="col-4 col-md-6">
         <% if @instrument.photo.attached? %>
-          <div class="img-fluid rounded-start" style="background-image:url('<%= cl_image_path @instrument.photo.key, height: 300, crop: :fill %>')";></div>
+          <%= cl_image_tag @instrument.photo.key, height: 350, crop: :fill, class:"show-product-img"%>
         <% else %>
           <div class="img-bg-none img-fluid rounded-start"><p>No Image</p></div>
         <% end %>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
+      <div class="col-8 col-md-4">
+        <div class="card-body" style="display: flex;flex-direction: column;">
           <h5 class="card-title">Details</h5>
           <p class="card-text"><%= @instrument.name %></p>
           <p class="card-text"><%= @instrument.description %></p>
           <p class="card-text">Duration:</p>
           <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
           <p class="card-text">Owner:</p>
-          <p><%= link_to "Book", new_booking_path, class: " btn btn-primary" %></p>
+          <p class="btn btn-primary"><%= link_to "Book", new_booking_path %></p>
         </div>
       </div>
     </div>
