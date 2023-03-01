@@ -6,8 +6,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params_review)
     @instrument = Instrument.find(params[:id])
-    @review.booking.instrument = @instrument
-    @review.booking.user = current_user
+    @review.booking = @instrument.booking
 
     if @review.save
       redirect_to instrument_path(@instrument)
