@@ -1,34 +1,32 @@
 <%= render "shared/navbar" %>
 <div class="container mt-4">
-  <div class="card mb-3" style="max-width: 1240px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <% if @instrument.photo.attached? %>
-          <div class="img-fluid rounded-start" style="background-image:url('<%= cl_image_path @instrument.photo.key, height: 300, crop: :fill %>')";></div>
-        <% else %>
-          <div class="img-bg-none img-fluid rounded-start"><p>No Image</p></div>
-        <% end %>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Details</h5>
-          <p class="card-text"><%= @instrument.name %></p>
-          <p class="card-text"><%= @instrument.description %></p>
-          <p class="card-text">Duration:</p>
-          <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
-          <p class="card-text">Owner:</p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+
+  <section class="main-card">
+    <div class="card-content">
+        <div class="content-left">
+          <% if @instrument.photo.attached? %>
+            <%= cl_image_tag @instrument.photo.key, class: "full-img" %>
+          <% else %>
+            <div class="full-img show-img-bg-none"><p>No Image</p></div>
+          <% end %>
         </div>
-      </div>
+        <div class="content-right">
+            <h2 class="strong"><%= @instrument.name %></h2>
+            <p><%= @instrument.description %></p>
+            <p>Rs <%= @instrument.price %> / day</p>
+            <p class="strong">Owner: <%= @instrument.user.first_name %></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
+        </div>
     </div>
-  </div>
+  </section>
+  <br><br>
   <h3 style="text-align:center;">Reviews</h3>
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>

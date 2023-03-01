@@ -19,6 +19,10 @@ class BookingsController < ApplicationController
     @instrument = @booking.instrument
   end
 
+  def index
+    @bookings = Booking.where(user: current_user)
+  end
+
   private
 
   def params_booking
