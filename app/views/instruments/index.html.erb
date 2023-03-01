@@ -8,18 +8,39 @@
     <% @instruments.each do |instrument| %>
       <%= link_to instrument_path(instrument), :action => 'go' do %>
         <div class="product-card">
+        <% if instrument.photo.attached? %>
           <div class="img-bg" style="background-image:url('<%= cl_image_path instrument.photo.key, height: 300, crop: :fill %>')";></div>
+        <% else %>
+          <div class="img-bg-none"><p>No Image</p></div>
+        <% end %>
           <div class="product-content">
             <div class="content-top">
               <p><%= instrument.name %></p>
               <p><i class="fa-solid fa-star"></i> 0</p>
             </div>
             <p>Rs<%= instrument.price %> / Day</p>
-            <%# <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
+<br><br><br>
+
+<article>
+  <div class="article-text">
+    <h3>A place to find your instruments</h3>
+    <p>We are slowed down sound and light waves, a walking bundle of frequencies tuned into the cosmos. We are souls dressed up in sacred biochemical garments and our bodies are the instruments through which our souls play their music.</p>
+    <p><%= link_to "Browse our range" %></p>
+  </div>
+</article>
+
 </div>
-    <br><br><br>
+
+
+<p class="title-footer">We work with some of the world's leading companies</p>
+<footer>
+  <p><i class="fa-brands fa-slack"></i>  Slack</p>
+  <p><i class="fa-brands fa-square-facebook"></i>  Facebook</p>
+  <p><i class="fa-brands fa-twitter"></i>  Twitter</p>
+</footer>
+<br>

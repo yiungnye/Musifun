@@ -6,3 +6,16 @@
   text-align: center;
   font-size: clamp(1.2rem, 2.5vw, 2.2rem);
 }
+
+.title-footer {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+}
