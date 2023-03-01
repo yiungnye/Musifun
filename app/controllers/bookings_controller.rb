@@ -3,13 +3,12 @@ class BookingsController < ApplicationController
     @user = current_user
     @booking = Booking.new(params_booking)
     @booking.user = @user
-    break
-    @instrument = Instrument.find(params[:])
-
+    @instrument = Instrument.find(params[:instrument_id])
+    @booking.instrument = @instrument
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      redirect_to instrument_path, status: :unprocessable_entity
+      redirect_to instrument_path(@instrument), status: :unprocessable_entity
     end
   end
 
@@ -26,6 +25,6 @@ class BookingsController < ApplicationController
   private
 
   def params_booking
-    params.require(:booking).permit(:start, :end)
+    params.require(:booking).permit(:start, :end, :instrument_id)
   end
 end
