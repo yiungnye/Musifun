@@ -26,4 +26,5 @@ User.destroy_all
     instrument.save
   end
 end
+
 puts "seed created"
