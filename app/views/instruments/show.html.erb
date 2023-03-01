@@ -17,7 +17,7 @@
           <p class="card-text">Duration:</p>
           <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
           <p class="card-text">Owner:</p>
-          <p class="btn btn-primary"><%= "Book" %></p>
+          <p><%= link_to "Book", new_booking_path, class: " btn btn-primary" %></p>
         </div>
       </div>
     </div>
