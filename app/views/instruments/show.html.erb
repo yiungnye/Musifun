@@ -1,18 +1,26 @@
 <%= render "shared/navbar" %>
-<!--<div class="container mt-4">
-  <div class="article-product">
-      <% if @instrument.photo.attached? %>
-        <div class="img-bg" style="background-image:url('<%= cl_image_path @instrument.photo.key, height: 300, crop: :fill %>')";></div>
-      <% else %>
-        <div class="img-bg-none"><p>No Image</p></div>
-      <% end %>
-    <div class="article-content">
-      <h4><%= @instrument.name %></h4>
-      <p><%= @instrument.description %></p>
-      <p><%= @instrument.price %></p>
-      <p><i class="fa-solid fa-star"></i> 0</p>
-      <p><%= link_to "Book", "", class: "button", width: 100 %></p>
+<div class="container mt-4">
+  <div class="card mb-3" style="max-width: 1240px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <% if @instrument.photo.attached? %>
+          <div class="img-fluid rounded-start" style="background-image:url('<%= cl_image_path @instrument.photo.key, height: 300, crop: :fill %>')";></div>
+        <% else %>
+          <div class="img-bg-none img-fluid rounded-start"><p>No Image</p></div>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Details</h5>
+          <p class="card-text"><%= @instrument.name %></p>
+          <p class="card-text"><%= @instrument.description %></p>
+          <p class="card-text">Duration:</p>
+          <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
+          <p class="card-text">Owner:</p>
+          <p><%= link_to "Book", new_booking_path, class: " btn btn-primary" %></p>
+        </div>
+      </div>
     </div>
   </div>
+  <h3 style="text-align:center;">Reviews</h3>
 </div>
--->

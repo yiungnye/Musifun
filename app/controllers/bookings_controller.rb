@@ -16,5 +16,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @user = @booking.user
+    @instrument = @booking.instrument
   end
 end
