@@ -17,11 +17,11 @@ User.destroy_all
   2.times do
     instrument = Instrument.new(
       name: Faker::Music.instrument,
-      description: Faker::Music.genre,
+      description: Faker::Lorem.sentence(word_count: 45),
       price: rand(80..240)
     )
 
-    file = URI.open("https://source.unsplash.com/random")
+    file = URI.open("https://source.unsplash.com/random/instrument")
     instrument.photo.attach(io: file, filename: "#{instrument.name}.png", content_type: "image/png")
     instrument.user = user
     instrument.save
