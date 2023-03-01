@@ -1,5 +1,6 @@
 <%= render "shared/navbar" %>
 <div class="container mt-4">
+<<<<<<< HEAD
   <div class="card mb-3" style="max-width: 1240px;">
     <div class="row g-0">
       <div class="col-4 col-md-6">
@@ -18,9 +19,27 @@
           <p class="card-text"><small class="text-muted">Rs <%= @instrument.price %></small></p>
           <p class="card-text">Owner:</p>
           <p class="btn btn-primary"><%= link_to "Book", new_booking_path %></p>
+=======
+
+  <section class="main-card">
+    <div class="card-content">
+        <div class="content-left">
+          <% if @instrument.photo.attached? %>
+            <%= cl_image_tag @instrument.photo.key, class: "full-img" %>
+          <% else %>
+            <div class="full-img show-img-bg-none"><p>No Image</p></div>
+          <% end %>
         </div>
-      </div>
+        <div class="content-right">
+            <h2 class="strong"><%= @instrument.name %></h2>
+            <p><%= @instrument.description %></p>
+            <p>Rs <%= @instrument.price %> / day</p>
+            <p class="strong">Owner: <%= @instrument.user.first_name %></p>
+            <h5>Book</h5>
+>>>>>>> d63a82b7ea388711aeca1af51a021cb1ede52a96
+        </div>
     </div>
-  </div>
+  </section>
+  <br><br>
   <h3 style="text-align:center;">Reviews</h3>
 </div>
