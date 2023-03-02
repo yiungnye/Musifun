@@ -19,6 +19,7 @@
             <p>Duration: <%= booking.start %> | <%= booking.end %></p>
             <p>Owner: <%= booking.user.first_name %></p>
             <p>Price: Rs<%= booking.instrument.price %> / Day</p>
+            <p class="mt-3"><%= link_to "Leave a review", instrument_path(booking.instrument) , class: "leave-review-btn" %></p>
           </div>
         </div>
 

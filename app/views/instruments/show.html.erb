@@ -44,17 +44,38 @@
       </p>
 
       <p style="text-align:center;">“<%= review.comment %>”</p>
-      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> </p>
+      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+        <span>
+          <% if review.booking.user.photo.attached? %>
+            <%= cl_image_tag review.booking.user.photo.key, class: "avatar" %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <% end %>
+        </span>
+      </p>
     </div>
     <br><br>
   <% end %>
+</div>
 
-    <br><br>
 
-
-  <br><br>
-
-  <br>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@instrument, @booking] do |f| %>
+          <%= f.input :start %>
+          <%= f.input :end %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 
