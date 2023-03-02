@@ -9,10 +9,10 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.find(params[:id])
     @review = Review.new
 
-    unless current_user.bookings.find_by(instrument_id: params[:id]).nil?
-      @reviews = current_user.bookings.find_by(instrument_id: params[:id]).reviews.order(created_at: :desc)
-    else
+    if current_user.bookings.find_by(instrument_id: params[:id]).nil?
       @reviews = []
+    else
+      @reviews = current_user.bookings.find_by(instrument_id: params[:id]).reviews.order(created_at: :desc)
     end
   end
 
