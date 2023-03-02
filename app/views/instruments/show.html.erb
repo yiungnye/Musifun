@@ -23,12 +23,18 @@
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
 
-  <%= @reviews.each do |review| %>
-    <div class="review-container">
-      <p>“<%= @instrument.description %>”</p>
-      <p class="user"><%= current_user.first_name %></p>
-    </div>
-    <br><br>
+  <%= simple_form_for [@instrument, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating %>
+  <%= f.submit "Add review", class: "btn btn-primary" %>
+  <% end %>
+
+  <br><br>
+
+  <% @reviews.each do |review| %>
+  <p>Comment: <%= review.comment %></p>
+  <p>Rating: <%= review.rating %></p>
+  <p>By: <%= review.booking.user.first_name %></p>
   <% end %>
 
 </div>
