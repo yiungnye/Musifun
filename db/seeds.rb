@@ -3,7 +3,6 @@ require "open-uri"
 Instrument.destroy_all
 User.destroy_all
 
-
 5.times do
   user = User.create!(
     first_name: Faker::Name.first_name,
@@ -27,4 +26,5 @@ User.destroy_all
     instrument.save
   end
 end
+
 puts "seed created"
