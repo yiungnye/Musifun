@@ -23,12 +23,21 @@
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
 
-  <%= @reviews.each do |review| %>
+  <% Review.all.each do |review| %>
     <div class="review-container">
-      <p>“<%= @instrument.description %>”</p>
-      <p class="user"><%= current_user.first_name %></p>
+      <p style="text-align:center;">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </p>
+
+      <p style="text-align:center;">“<%= review.comment %>”</p>
+      <p class="user"></p>
     </div>
+
     <br><br>
   <% end %>
-
+  <br><br>
 </div>
