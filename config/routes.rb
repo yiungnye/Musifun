@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :instruments do
     resources :reviews, only: %i[create]
+    resources :bookings, only: %i[create]
   end
 
   resources :bookings
