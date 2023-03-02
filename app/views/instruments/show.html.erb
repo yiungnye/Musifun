@@ -23,6 +23,22 @@
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
 
+  <% Review.all.each do |review| %>
+    <div class="review-container">
+      <p style="text-align:center;">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </p>
+
+      <p style="text-align:center;">“<%= review.comment %>”</p>
+      <p class="user"></p>
+    </div>
+
+    <br><br>
+
   <%= simple_form_for [@instrument, @review] do |f| %>
   <%= f.input :comment %>
   <%= f.input :rating %>
@@ -36,7 +52,7 @@
   <p>Rating: <%= review.rating %></p>
   <p>By: <%= review.booking.user.first_name %></p>
   <% end %>
-
+  <br><br>
 </div>
 
 

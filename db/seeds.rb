@@ -20,7 +20,7 @@ User.destroy_all
       price: rand(80..240)
     )
 
-    file = URI.open("https://source.unsplash.com/random/instrument")
+    file = URI.open("https://source.unsplash.com/random/?instrument")
     instrument.photo.attach(io: file, filename: "#{instrument.name}.png", content_type: "image/png")
     instrument.user = user
     instrument.save

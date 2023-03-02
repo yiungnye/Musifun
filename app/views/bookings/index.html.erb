@@ -1,11 +1,29 @@
-<h1>Listining Bookings</h1>
+<%= render "shared/navbar" %>
+<p class="title mt-4">Listing Bookings</h1>
 
-<p>
-<% @bookings.each do |booking| %>
 
-  <%= booking.user.first_name %>
-  <%= booking.instrument.name %>
-  <%= booking.start %>
-  <%= booking.end %>
-  <% end %>
-</p>
+<div class="article-container">
+  <br>
+
+  <div class="cards-container">
+    <% @bookings.each do |booking| %>
+
+        <div class="booking-product-card">
+        <% if booking.photo.attached? %>
+          <div class="img-bg" style="background-image:url('<%= cl_image_path booking.photo.key, height: 300, crop: :fill %>')";></div>
+        <% else %>
+          <div class="img-bg-none"><p>No Image</p></div>
+        <% end %>
+          <div class="product-content">
+            <p><%= booking.instrument.name %></p>
+            <p>Duration: <%= booking.start %> | <%= booking.end %></p>
+            <p>Owner: <%= booking.user.first_name %></p>
+            <p>Price: Rs<%= booking.instrument.price %> / Day</p>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+<br><br><br>
+
+</div>
