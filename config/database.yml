@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: Musifun_production
-  username:
+  username: Musifun
   password: <%= ENV["MUSIFUN_DATABASE_PASSWORD"] %>
