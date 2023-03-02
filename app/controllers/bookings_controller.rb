@@ -1,8 +1,15 @@
 class BookingsController < ApplicationController
-  def new
-  end
-
   def create
+    @user = current_user
+    @booking = Booking.new(params_booking)
+    @booking.user = @user
+    @instrument = Instrument.find(params[:instrument_id])
+    @booking.instrument = @instrument
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      redirect_to instrument_path(@instrument), status: :unprocessable_entity
+    end
   end
 
   def show
@@ -13,5 +20,11 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user: current_user)
+  end
+
+  private
+
+  def params_booking
+    params.require(:booking).permit(:start, :end, :instrument_id)
   end
 end
