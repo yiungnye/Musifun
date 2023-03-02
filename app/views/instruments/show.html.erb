@@ -23,37 +23,34 @@
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
 
-  <% Review.all.each do |review| %>
+  <div class="reviews-form">
+    <%= simple_form_for [@instrument, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit "Add review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <br><br><br><br>
+
+  <% @reviews.each do |review| %>
     <div class="review-container">
       <p style="text-align:center;">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
+        <%= '⭐'*review.rating %>
       </p>
 
       <p style="text-align:center;">“<%= review.comment %>”</p>
-      <p class="user"></p>
+      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> </p>
     </div>
+    <br><br>
   <% end %>
 
     <br><br>
 
-  <%= simple_form_for [@instrument, @review] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.submit "Add review", class: "btn btn-primary" %>
-  <% end %>
 
   <br><br>
 
-  <% @reviews.each do |review| %>
-  <p>Comment: <%= review.comment %></p>
-  <p>Rating: <%= review.rating %></p>
-  <p>By: <%= review.booking.user.first_name %></p>
-  <% end %>
-  <br><br>
+  <br>
 </div>
 
 

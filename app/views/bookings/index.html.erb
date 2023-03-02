@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<p class="title mt-4">Listing Bookings</h1>
+<p class="title mt-4">Listing your bookings</h1>
 
 
 <div class="article-container">
@@ -9,8 +9,8 @@
     <% @bookings.each do |booking| %>
 
         <div class="booking-product-card">
-        <% if booking.photo.attached? %>
-          <div class="img-bg" style="background-image:url('<%= cl_image_path booking.photo.key, height: 300, crop: :fill %>')";></div>
+        <% if booking.instrument.photo.attached? %>
+          <div class="img-bg" style="background-image:url('<%= cl_image_path booking.instrument.photo.key, height: 300, crop: :fill %>')";></div>
         <% else %>
           <div class="img-bg-none"><p>No Image</p></div>
         <% end %>
