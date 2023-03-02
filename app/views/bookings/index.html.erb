@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<p class="title mt-4">Listining Bookings</h1>
+<p class="title mt-4">Listing Bookings</h1>
 
 
 <div class="article-container">
@@ -15,12 +15,10 @@
           <div class="img-bg-none"><p>No Image</p></div>
         <% end %>
           <div class="product-content">
-            <div class="content-top">
-              <p><%= booking.instrument.name %></p>
-              <p><%= booking.start %> | <%= booking.end %></p>
-              <p><%= booking.user.first_name %></p>
-            </div>
-            <p>Rs<%= booking.instrument.price %> / Day</p>
+            <p><%= booking.instrument.name %></p>
+            <p>Duration: <%= booking.start %> | <%= booking.end %></p>
+            <p>Owner: <%= booking.user.first_name %></p>
+            <p>Price: Rs<%= booking.instrument.price %> / Day</p>
           </div>
         </div>
 
