@@ -8,6 +8,13 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = Instrument.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+
+    if @instrument.reviews.nil?
+      @reviews = []
+    else
+      @reviews = @instrument.reviews.order(created_at: :desc)
+    end
   end
 
   def new
