@@ -15,7 +15,7 @@
             <p><%= @instrument.description %></p>
             <p>Rs <%= @instrument.price %> / day</p>
             <p class="strong">Owner: <%= @instrument.user.first_name %></p>
-            <h5>Book</h5>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
         </div>
     </div>
   </section>
@@ -23,12 +23,52 @@
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
 
-  <%= @reviews.each do |review| %>
+  <div class="reviews-form">
+    <%= simple_form_for [@instrument, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit "Add review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <br><br><br><br>
+
+  <% @reviews.each do |review| %>
     <div class="review-container">
-      <p>“<%= @instrument.description %>”</p>
-      <p class="user"><%= current_user.first_name %></p>
+      <p style="text-align:center;">
+        <%= '⭐'*review.rating %>
+      </p>
+
+      <p style="text-align:center;">“<%= review.comment %>”</p>
+      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> </p>
     </div>
     <br><br>
   <% end %>
 
+    <br><br>
+
+
+  <br><br>
+
+  <br>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@instrument, @booking] do |f| %>
+          <%= f.input :start %>
+          <%= f.input :end %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

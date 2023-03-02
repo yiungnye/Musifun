@@ -1,6 +1,6 @@
 .review-container {
   max-width: 1000px;
-  padding: 50px 50px 20px 50px;
+  padding: 15px 40px 10px 40px;
   margin: 0 auto;
   background-color: antiquewhite;
   border-radius: 6px;
@@ -11,4 +11,10 @@
     text-align: right;
     margin-right: 24px;
   }
+}
+
+.reviews-form {
+  background-color: antiquewhite;
+  padding: 20px 40px;
+  border-radius: 8px;
 }
