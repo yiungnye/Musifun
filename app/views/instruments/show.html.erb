@@ -40,17 +40,18 @@
       </p>
 
       <p style="text-align:center;">“<%= review.comment %>”</p>
-      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %> </p>
+      <p class="user"> - <%= review.booking.user.first_name %> <%= review.booking.user.last_name %>
+        <span>
+          <% if review.booking.user.photo.attached? %>
+            <%= cl_image_tag review.booking.user.photo.key, class: "avatar" %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <% end %>
+        </span>
+      </p>
     </div>
     <br><br>
   <% end %>
-
-    <br><br>
-
-
-  <br><br>
-
-  <br>
 </div>
 
 
