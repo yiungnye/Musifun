@@ -22,23 +22,21 @@
   <br><br>
   <h3 style="text-align:center;">Reviews</h3>
   <br><br>
-  <%= simple_form_for [@instrument, @review] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating %>
-  <%= f.submit "Add review", class: "btn btn-primary" %>
-  <% end %>
 
-<br><br><br><br>
+  <div class="reviews-form">
+    <%= simple_form_for [@instrument, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit "Add review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
+  <br><br><br><br>
 
   <% @reviews.each do |review| %>
     <div class="review-container">
       <p style="text-align:center;">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
+        <%= '⭐'*review.rating %>
       </p>
 
       <p style="text-align:center;">“<%= review.comment %>”</p>
@@ -52,7 +50,7 @@
 
   <br><br>
 
-  <br><br>
+  <br>
 </div>
 
 

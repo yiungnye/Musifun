@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
     @instrument = Instrument.find(params[:instrument_id])
     @booking.instrument = @instrument
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to bookings_path
     else
       redirect_to instrument_path(@instrument), status: :unprocessable_entity
     end
