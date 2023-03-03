@@ -1,10 +1,19 @@
-<%= render "shared/navbar" %>
+<div class="container-form">
+<br>
+<div class="form-side">
+<p><%= link_to "< Back to home", root_path %></p>
+<h2>Publish your offer</h2>
+
 <div class="container mt-4">
   <%= simple_form_for(@instrument) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :price %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit "Add instrument", class: "btn btn-primary" %>
+    <%= f.submit "Add new offer", class: "btn btn-primary" %>
   <% end %>
+</div>
+  </div>
+  <div class="img-side" style="background-image:url(https://images.unsplash.com/photo-1542357411977-726a8931ee8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHNlbGxpbmclMjBpbnN0cnVtZW50fGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60);"></div>
+
 </div>
