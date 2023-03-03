@@ -9,6 +9,10 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def posts
+    @posts = Instrument.where(user: current_user)
+  end
+
   def show
     @instrument = Instrument.find(params[:id])
     @marker = {
