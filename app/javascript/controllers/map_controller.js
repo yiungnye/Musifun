@@ -14,7 +14,13 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.NavigationControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+    }));
 
     this.#addUserLocation()
     this.#addMarkerToMap()
