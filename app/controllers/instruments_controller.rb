@@ -37,6 +37,7 @@ class InstrumentsController < ApplicationController
     @user = current_user
     @instrument = Instrument.new(params_instrument)
     @instrument.user = @user
+    @instrument.address = current_user.address
 
     if @instrument.save
       # redirect_to instrument_path(@instrument)

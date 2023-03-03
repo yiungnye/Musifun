@@ -1,10 +1,5 @@
 require "open-uri"
 
-Review.destroy_all
-Booking.destroy_all
-Instrument.destroy_all
-User.destroy_all
-
 5.times do
   user = User.create!(
     first_name: Faker::Name.first_name,

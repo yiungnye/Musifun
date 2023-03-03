@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :instruments, through: :bookings
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :address, :first_name, :last_name, presence: true
 end
