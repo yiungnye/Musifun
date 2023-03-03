@@ -9,8 +9,8 @@
 
   <div class="cards-container">
     <% @instruments.each do |instrument| %>
-      <%= link_to instrument_path(instrument), :action => 'go' do %>
-        <div class="product-card">
+      <div class="product-card">
+        <%= link_to instrument_path(instrument), :action => 'go' do %>
         <% if instrument.photo.attached? %>
           <div class="img-bg" style="background-image:url('<%= cl_image_path instrument.photo.key, height: 300, crop: :fill %>')";></div>
         <% else %>
@@ -23,8 +23,8 @@
             </div>
             <p><strong>Price:</strong> Rs<%= instrument.price %> / Day</p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 <br><br><br>

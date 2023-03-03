@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <h3 class="my-4" style="text-align:center;">Reviews</h3>
+  <h3 class="my-4" style="text-align:center;">Reviews (<%= @reviews.count %>)</h3>
 
   <div class="reviews-form">
     <%= simple_form_for [@instrument, @review] do |f| %>
