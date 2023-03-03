@@ -15,12 +15,14 @@
               <h2 class="strong"><%= @instrument.name %></h2>
               <p><%= @instrument.description %></p>
               <p>Rs <%= @instrument.price %> / day</p>
-              <p class="strong">Owner: <%= @instrument.user.first_name %></p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
+              <p class="strong">Owner: <%= @instrument.user.first_name %> <%= @instrument.user.last_name %></p>
+              <p class='strong'>Location: <%= @instrument.user.address %></p>
+              <p class='strong'>Contact: <%= @instrument.user.email %></p>
+              <button style='width: 100%' type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
           </div>
       </div>
     </section>
-    <div style="width: 40%; height: 470px;"
+    <div style="width: 40%; height: 635px;"
         data-controller="map"
         data-map-marker-value="<%= @marker.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -29,13 +31,16 @@
 
   <h3 class="my-4" style="text-align:center;">Reviews (<%= @reviews.count %>)</h3>
 
-  <div class="reviews-form">
-    <%= simple_form_for [@instrument, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating %>
-    <%= f.submit "Add review", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <% if @instrument.bookings.any? { |booking| booking.user == current_user } %>
+    <div class="reviews-form">
+      <%= simple_form_for [@instrument, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating %>
+      <%= f.submit "Add review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+
   <br><br><br>
 
   <% @reviews.each do |review| %>
