@@ -1,12 +1,23 @@
 <%= render 'shared/navbar' %>
+<div class="post">
+  <div class="container">
+    <br><br>
+    <h1 class='text-center'>My Posts</h1>
+    <% @posts.each do |post| %>
 
-<div class="container">
-  <br><br>
-  <h1 class='text-center'>My Posts</h1>
-  <% @posts.each do |post| %>
-    <p>Name: <%= post.name %></p>
-    <p>Description: <%= post.description %></p>
-    <p>Price/day: <%= post.price %></p>
-    <p>Posted on: <%= post.created_at %></p>
-  <% end %>
+    <div class="product-card" style="height: 280px;">
+    <% if post.photo.attached? %>
+      <div class="img-bg" style="background-image:url('<%= cl_image_path post.photo.key, height: 300, crop: :fill %>')";></div>
+    <% else %>
+      <div class="img-bg-none"><p>No Image</p></div>
+    <% end %>
+      <div class="product-content">
+        <p><%= post.name %></p>
+        <p>Posted on: <%= post.created_at %></p>
+        <p><strong>Price:</strong> Rs<%= post.price %> / Day</p>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
 </div>
