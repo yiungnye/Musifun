@@ -1,31 +1,33 @@
 <%= render "shared/navbar" %>
 <div class="container mt-4">
 
-  <section class="main-card">
-    <div class="card-content">
-        <div class="content-left">
-          <% if @instrument.photo.attached? %>
-            <%= cl_image_tag @instrument.photo.key, class: "full-img" %>
-          <% else %>
-            <div class="full-img show-img-bg-none"><p>No Image</p></div>
-          <% end %>
-        </div>
-        <div class="content-right">
-            <h2 class="strong"><%= @instrument.name %></h2>
-            <p><%= @instrument.description %></p>
-            <p>Rs <%= @instrument.price %> / day</p>
-            <p class="strong">Owner: <%= @instrument.user.first_name %></p>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
-        </div>
+  <div class="container-show">
+    <section class="main-card mb-4">
+      <div class="card-content">
+          <div class="content-left">
+            <% if @instrument.photo.attached? %>
+              <%= cl_image_tag @instrument.photo.key, class: "full-img" %>
+            <% else %>
+              <div class="full-img show-img-bg-none"><p>No Image</p></div>
+            <% end %>
+          </div>
+          <div class="content-right">
+              <h2 class="strong"><%= @instrument.name %></h2>
+              <p><%= @instrument.description %></p>
+              <p>Rs <%= @instrument.price %> / day</p>
+              <p class="strong">Owner: <%= @instrument.user.first_name %></p>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">BOOK</button>
+          </div>
+      </div>
+    </section>
+    <div style="width: 40%; height: 470px;"
+        data-controller="map"
+        data-map-marker-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  </section>
-  <br><br>
-  <div style="width: 100%; height: 400px;"
-       data-controller="map"
-       data-map-marker-value="<%= @marker.to_json %>"
-       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <h3 style="text-align:center;">Reviews</h3>
-  <br><br>
+  </div>
+
+  <h3 class="my-4" style="text-align:center;">Reviews</h3>
 
   <div class="reviews-form">
     <%= simple_form_for [@instrument, @review] do |f| %>
@@ -34,8 +36,7 @@
     <%= f.submit "Add review", class: "btn btn-primary" %>
     <% end %>
   </div>
-
-  <br><br><br><br>
+  <br><br><br>
 
   <% @reviews.each do |review| %>
     <div class="review-container">

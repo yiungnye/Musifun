@@ -19,3 +19,7 @@ footer {
   align-items: center;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
 }
+
+.container-show {
+  display: flex;
+}
