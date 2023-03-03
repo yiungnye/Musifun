@@ -53,6 +53,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_112915) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "flats", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "name"
     t.text "description"
